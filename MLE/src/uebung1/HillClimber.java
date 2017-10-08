@@ -27,8 +27,8 @@ public class HillClimber {
 	}
 	//tasucht zwei zufällige städte in der Route
 	public static void randomSwap(int[] route) {
-		int random1 = (int)((Math.random()) * 100);
-		int random2 = (int)((Math.random()) * 100);
+		int random1 = (int)((Math.random()) * route.length);
+		int random2 = (int)((Math.random()) * route.length);
 
 		if(random1 != random2) {
 			int temp = route[random1];
