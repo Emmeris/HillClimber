@@ -8,6 +8,7 @@ public class Main {
 	static int[][] cities = new int[amount][amount];
 	static int[] route = new int[amount];
 	
+	//NUR TESTWEISE IN DER MAIN WIRD NOCH AUSGELAGERT
 	static void hillClimber(int[][] matrix, int[]startRoute){
 		int Fitness = Matrix.getDistance(matrix, startRoute);
 		int lastFitness;
@@ -28,7 +29,7 @@ public class Main {
 				count--;
 		}
 	}
-	
+	//tasucht zwei zufällige städte in der Route
 	public static void randomSwap(int[] route) {
 		int random1 = (int)((Math.random()) * 100);
 		int random2 = (int)((Math.random()) * 100);
