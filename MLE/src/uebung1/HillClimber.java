@@ -8,20 +8,20 @@ public class HillClimber {
 		int Fitness = Matrix.getDistance(matrix, startRoute);
 		int lastFitness;
 		int[]lastRoute = startRoute;
-		int count = 1000000;
+		int count = 0;
 
-		while(count >= 0) {
+		while(count <= 10000000) {
 			randomSwap(startRoute);
 			if( Matrix.getDistance(matrix, startRoute) < Fitness) {
 				lastFitness = Matrix.getDistance(matrix, lastRoute);
 				Fitness = lastFitness;
-				System.out.println("Aktuelle Fintess: " + lastFitness);
+				System.out.println("Loop: " + count + " "  +"Aktuelle Fintess: " + lastFitness);
 				startRoute = lastRoute;
-				count--;
+				count++;
 			}
 			else 
 				lastRoute = startRoute;
-			count--;
+			count++;
 		}
 		return lastRoute;
 	}
