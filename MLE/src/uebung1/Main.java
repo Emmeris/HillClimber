@@ -4,7 +4,7 @@ import uebung1.Matrix;
 import uebung1.HillClimber;
 
 public class Main {
-	static int amount = 100;
+	static int amount = 4;
 	static int[][] cities = new int[amount][amount];
 	static int[] route = new int[amount];
 	
@@ -16,18 +16,21 @@ public class Main {
 		Matrix.initRoute(route);
 
 		//zum testen ob Matrix richtig erzeugt wurde
-		for(int i=0; i < cities.length; i++) {
-			for(int k=0; k < cities[i].length; k++) {
-				System.out.println(i + "," + k +" = "+  cities[i][k]);
-			}
+		for (int i = 0; i < cities.length; i++) {
+		    for (int j = 0; j < cities[i].length; j++) {
+		        System.out.print(cities[i][j] + " ");
+		    }
+		    System.out.println();
 		}
+		
+		
 		System.out.println("Startdistanz: " + (Matrix.getDistance(cities, route)));
 		
 		HillClimber.hillClimber(cities, route);
 		
 		System.out.println("Beste Route: ");
 		for(int i=0; i < route.length; i++) {
-			System.out.println(route[i]);
+			System.out.print(route[i] + " ");
 	
 		}
 	}

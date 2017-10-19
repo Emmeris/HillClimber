@@ -5,21 +5,24 @@ import uebung1.Matrix;
 public class HillClimber {
 
 	static int[] hillClimber(int[][] matrix, int[]startRoute){
-		int Fitness = Matrix.getDistance(matrix, startRoute);
+		int fitness = Matrix.getDistance(matrix, startRoute)*(-1);
 		int lastFitness;
 		int[]lastRoute = startRoute;
 		int count = 0;
+		double wahrscheinlichkeit = Math.random();
 
 		while(count <= 10000000) {
 			randomSwap(startRoute);
-			if( Matrix.getDistance(matrix, startRoute) < Fitness) {
-				lastFitness = Matrix.getDistance(matrix, lastRoute);
-				Fitness = lastFitness;
-				System.out.println("Loop: " + count + " "  +"Aktuelle Fintess: " + lastFitness);
+			if( Matrix.getDistance(matrix, startRoute)*(-1) > fitness) {
+				lastFitness = Matrix.getDistance(matrix, lastRoute)*(-1);
+				fitness = lastFitness;
+				System.out.println("Loop: " + count + " " + "Aktuelle Fintess: " + lastFitness);
 				startRoute = lastRoute;
 				count++;
 			}
 			else 
+				//Hier Simulated Annealing ob die Wahrscheinlichkeit für rückschritt gegeben ist
+				//Distanz und Fitness ist nicht dasselbe!
 				lastRoute = startRoute;
 			count++;
 		}
