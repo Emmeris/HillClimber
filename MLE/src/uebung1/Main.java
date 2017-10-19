@@ -4,7 +4,7 @@ import uebung1.Matrix;
 import uebung1.HillClimber;
 
 public class Main {
-	static int amount = 4;
+	static int amount = 100;
 	static int[][] cities = new int[amount][amount];
 	static int[] route = new int[amount];
 	

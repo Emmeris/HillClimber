@@ -5,28 +5,39 @@ import uebung1.Matrix;
 public class HillClimber {
 
 	static int[] hillClimber(int[][] matrix, int[]startRoute){
-		int fitness = Matrix.getDistance(matrix, startRoute)*(-1);
-		int lastFitness;
-		int[]lastRoute = startRoute;
-		int count = 0;
-		double wahrscheinlichkeit = Math.random();
+		int[] hypo = startRoute;
+		int[] hypoCopy;
+		int lastFitness = Matrix.getDistance(matrix, hypo)*(-1);
+		int loop = 0;
+		double temp = 100000;
+		double epsilon = 0.2;
 
-		while(count <= 10000000) {
-			randomSwap(startRoute);
-			if( Matrix.getDistance(matrix, startRoute)*(-1) > fitness) {
-				lastFitness = Matrix.getDistance(matrix, lastRoute)*(-1);
-				fitness = lastFitness;
-				System.out.println("Loop: " + count + " " + "Aktuelle Fintess: " + lastFitness);
-				startRoute = lastRoute;
-				count++;
+
+		while(temp > epsilon) {
+			hypoCopy = hypo;
+			randomSwap(hypo);
+			
+			if( Matrix.getDistance(matrix, hypo)*(-1) > lastFitness) {
+				lastFitness = Matrix.getDistance(matrix, hypo)*(-1);
+				System.out.println("Loop: " + loop + " " + "Aktuelle Fintess: " + lastFitness);
+				loop++;
 			}
-			else 
-				//Hier Simulated Annealing ob die Wahrscheinlichkeit für rückschritt gegeben ist
-				//Distanz und Fitness ist nicht dasselbe!
-				lastRoute = startRoute;
-			count++;
+			
+			else if(Math.random() < (Matrix.getDistance(matrix, hypo)*(-1) - lastFitness) / temp ) {
+				lastFitness = Matrix.getDistance(matrix, hypo)*(-1);
+				System.out.println("Temperatur: " + temp);
+				System.out.println("Loop: " + loop + " " + "Aktuelle Fintess: " + lastFitness);
+				loop++;
+				
+			}
+			
+			else {
+				hypo = hypoCopy;
+				loop++;
+			}
+			temp = temp-epsilon;
 		}
-		return lastRoute;
+		return hypo;
 	}
 	//tasucht zwei zufällige städte in der Route
 	public static void randomSwap(int[] route) {

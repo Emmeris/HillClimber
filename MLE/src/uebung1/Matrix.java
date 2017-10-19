@@ -11,7 +11,7 @@ public class Matrix {
 					matrix[i][k] = 0; 
 				}
 				//füllt die Matrix mit random werten
-				else matrix[i][k] = (int) Math.round (Math.random() * 8 +1);
+				else matrix[i][k] = (int) Math.round (Math.random() * 1000 +1);
 				//sorgt dafür, dass z.B. in 3,1 das selbe steht wie in 1,3
 				matrix[k][i] = matrix[i][k];
 			}
