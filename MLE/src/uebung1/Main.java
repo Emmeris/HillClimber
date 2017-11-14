@@ -1,7 +1,7 @@
 package uebung1;
 
 import uebung1.Matrix;
-import uebung1.HillClimber;
+import uebung1.HillClimberSimA;
 
 public class Main {
 	static int amount = 100;
@@ -26,7 +26,7 @@ public class Main {
 		
 		System.out.println("Startdistanz: " + (Matrix.getDistance(cities, route)));
 		
-		HillClimber.hillClimber(cities, route);
+		HillClimberSimA.hillClimber(cities, route);
 		
 		System.out.println("Beste Route: ");
 		for(int i=0; i < route.length; i++) {

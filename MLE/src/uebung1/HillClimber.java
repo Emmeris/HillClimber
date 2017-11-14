@@ -5,39 +5,25 @@ import uebung1.Matrix;
 public class HillClimber {
 
 	static int[] hillClimber(int[][] matrix, int[]startRoute){
-		int[] hypo = startRoute;
-		int[] hypoCopy;
-		int lastFitness = Matrix.getDistance(matrix, hypo)*(-1);
-		int loop = 0;
-		double temp = 100000;
-		double epsilon = 0.2;
+		int Fitness = Matrix.getDistance(matrix, startRoute);
+		int lastFitness;
+		int[]lastRoute = startRoute;
+		int count = 0;
 
-
-		while(temp > epsilon) {
-			hypoCopy = hypo;
-			randomSwap(hypo);
-			
-			if( Matrix.getDistance(matrix, hypo)*(-1) > lastFitness) {
-				lastFitness = Matrix.getDistance(matrix, hypo)*(-1);
-				System.out.println("Loop: " + loop + " " + "Aktuelle Fintess: " + lastFitness);
-				loop++;
+		while(count <= 10000000) {
+			randomSwap(startRoute);
+			if( Matrix.getDistance(matrix, startRoute) < Fitness) {
+				lastFitness = Matrix.getDistance(matrix, lastRoute);
+				Fitness = lastFitness;
+				System.out.println("Loop: " + count + " "  +"Aktuelle Fintess: " + lastFitness);
+				startRoute = lastRoute;
+				count++;
 			}
-			
-			else if(Math.random() < (Matrix.getDistance(matrix, hypo)*(-1) - lastFitness) / temp ) {
-				lastFitness = Matrix.getDistance(matrix, hypo)*(-1);
-				System.out.println("Temperatur: " + temp);
-				System.out.println("Loop: " + loop + " " + "Aktuelle Fintess: " + lastFitness);
-				loop++;
-				
-			}
-			
-			else {
-				hypo = hypoCopy;
-				loop++;
-			}
-			temp = temp-epsilon;
+			else 
+				lastRoute = startRoute;
+			count++;
 		}
-		return hypo;
+		return lastRoute;
 	}
 	//tasucht zwei zufällige städte in der Route
 	public static void randomSwap(int[] route) {
