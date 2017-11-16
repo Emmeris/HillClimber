@@ -1,10 +1,12 @@
 package uebung3;
 
-public class BiteSequenz {
-	// Anzahl Individuen
-	static int[] p = new int[9];
+public class ByteSequenz {
+	// Anzahl Individuen(Hypothesen) in Population
+	static int p = 9;
+	// Population
+	static int[] population = new int[p];
 	// Anteil der durch Crossover ersetzt wird
-	static int r = p.length/2;
+	static int r = population.length/2;
 	// Mutationsrate
 	static int m;
 	
@@ -15,9 +17,14 @@ public class BiteSequenz {
 		}
 	}
 	
+	public static int getFitness(int[] p) {
+		int fitness = 0;
+		return fitness;
+	}
+	
 	public static void main(String[] args) {
 		// initialisiert die Population
-		init(p);
+		init(population);
 		
 	}
 }
