@@ -1,4 +1,4 @@
-package uebung1;
+package uebung1u2;
 
 public class Matrix {
 

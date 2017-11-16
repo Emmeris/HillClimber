@@ -1,7 +1,7 @@
-package uebung1;
+package uebung1u2;
 
-import uebung1.Matrix;
-import uebung1.HillClimberSimA;
+import uebung1u2.HillClimberSimA;
+import uebung1u2.Matrix;
 
 public class Main {
 	static int amount = 100;

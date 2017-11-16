@@ -1,6 +1,6 @@
-package uebung1;
+package uebung1u2;
 
-import uebung1.Matrix;
+import uebung1u2.Matrix;
 
 public class HillClimberSimA {
 
